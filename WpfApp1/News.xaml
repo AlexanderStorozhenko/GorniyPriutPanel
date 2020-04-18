@@ -1,0 +1,85 @@
+﻿<Page x:Class="GorniyPriutPanel.News"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GorniyPriutPanel"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="News">
+    <Page.Resources>
+        <ResourceDictionary Source="SubmitButtonStyle.xaml"/>
+    </Page.Resources>
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30px"/>
+            <RowDefinition MinHeight="0"/>
+
+        </Grid.RowDefinitions>
+
+
+
+        <GroupBox Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Header="Post form" Height="400px" Width="260px"  Padding="10px" >
+            <StackPanel x:Name="post_form" Width="220px" VerticalAlignment="Center">
+
+                <StackPanel Width="Auto">
+                    <TextBlock>Post title</TextBlock>
+                    <TextBox x:Name="post_form_title" HorizontalAlignment="Left" Margin="0 6px" 
+                             Width="{Binding ElementName=post_form, Path=Width}" Height="20px"
+                             >
+                    </TextBox>
+                </StackPanel>
+
+
+                <StackPanel >
+                    <TextBlock>Post date</TextBlock>
+                    <DatePicker Name="post_from_date" HorizontalAlignment="Left"  Margin="0 6px"
+                    Width="{Binding ElementName=post_form, Path=Width}" Height="25px" SelectedDateFormat="Short">
+                    </DatePicker>
+                </StackPanel>
+
+                <StackPanel >
+                    <TextBlock>Post text</TextBlock>
+
+                    <TextBox x:Name="post_form_text" HorizontalAlignment="Left" Margin="0 6px" 
+                   Width="{Binding ElementName=post_form, Path=Width}" Height="200px" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <Button Name="add_new_btn" Click="AddNew" Content="Добавить" Style="{StaticResource SameBackgroundButton}" Width="85" Height="25" Foreground="White" FontFamily="Arial" FontWeight="Bold"/>
+                </StackPanel>
+
+            </StackPanel>
+        </GroupBox>
+
+
+        <StackPanel Margin="10px 0" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <ScrollViewer Height="410px" Width="300px">
+                <ListBox Width="280px" x:Name="news_list">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="265px"  Height="200px" Orientation="Vertical" >
+                                <Canvas Width="264px" Height="31px">
+                                    <TextBox Text="{Binding Path=Id}" Width="130px"  Canvas.Left="0" Height="25px" Padding="0 3px"/>
+                                    <DatePicker SelectedDate="{Binding Path=Date}"  Canvas.Right="0" Width="100px" Height="25px"/>
+                                </Canvas>
+                                <TextBox Width="264px" Height="160px" TextWrapping="Wrap" Text="{Binding Path=Text}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+            <Button Width="100px" Height="25px" Click="RefreshItems" HorizontalAlignment="Right">Обновить</Button>
+
+        </StackPanel>
+
+    </Grid>
+</Page>

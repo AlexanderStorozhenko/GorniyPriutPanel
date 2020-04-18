@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace GorniyPriutPanel
+{
+    /// <summary>
+    /// Логика взаимодействия для Text.xaml
+    /// </summary>
+    public partial class Text : Page
+    {
+        public Text()
+        {
+            InitializeComponent();
+
+
+        }
+
+        private async void ChangeText_Click(object sender, RoutedEventArgs e)
+        {
+            StatusBar.DisableControls();
+            var result = await Request.GetInstance().Post("home/description", new Dictionary<string, string> { { "text", text.Text } });
+            Console.WriteLine(result);
+            StatusBar.EnableControls();
+        }
+    }
+}

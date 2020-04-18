@@ -1,0 +1,17 @@
+﻿<Window x:Class="GorniyPriutPanel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GorniyPriutPanel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="570" Width="700" ResizeMode="NoResize">
+    
+    <StackPanel>
+        <Frame  NavigationUIVisibility="Hidden" Name="FrameMenu" Source="Menu.xaml"/>
+        <Frame Height="485px"  NavigationUIVisibility="Hidden" Name="FrameMain" Source="News.xaml"/>
+        <Frame VerticalAlignment="Bottom"  NavigationUIVisibility="Hidden" Name="FrameStatus" Source="StatusBar.xaml"/>
+
+    </StackPanel>
+    
+</Window>
